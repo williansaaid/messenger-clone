@@ -9,8 +9,15 @@ module.exports = {
     extend: {
       colors: {
         light: '#f3f4f6',
+        dark: '#111827',
+        white: '#ffffff'
       },
     },
+    plugins: [
+      require('@tailwindcss/forms')({
+        strategy: 'class'
+      })
+    ]
   },
   plugins: [],
 }
