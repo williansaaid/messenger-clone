@@ -11,12 +11,11 @@ export default async function ConversationsLayout({
     const conversations = await getConversations();
 
     return (
-        //@ts-expect-error Server component
         <Sidebar>
-            <ConversationsList
-                initialItems={conversations}
-            />
             <div className="h-full">
+                <ConversationsList
+                    initialItems={conversations}
+                />
                 { children }
             </div>
         </Sidebar>

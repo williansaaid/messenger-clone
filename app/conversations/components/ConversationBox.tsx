@@ -2,7 +2,6 @@
 
 import clsx from "clsx";
 import { useCallback, useMemo } from "react";
-import { Conversation, Message, User } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
@@ -64,12 +63,20 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
     return (
         <div
             onClick={handleClick}
-            className={
-                clsx(
-                    'w-full relative flex items-center space-x-3 hover:bg-neutral-100 rounded-lg transition cursor-pointer p-3',
-                    selected ? 'bg-neutral-100' : 'bg-white'
-                )
-            }
+            className={clsx(`
+                w-full
+                relative
+                flex
+                items-center
+                space-x-3
+                p-3
+                hover:bg-neutral-100
+                rounded-lg
+                transition
+                cursor-pointer
+                `,
+                selected ? 'bg-neutral-100' : 'bg-white'
+            )}
         >
             <Avatar user={otherUser}/>
             <div
@@ -78,6 +85,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({
                 <div
                     className="focus:outline-none"
                 >
+                    <span className="absolute inset-0" aria-hidden='true'/>
                     <div
                         className="flex justify-between items-center mb-1"
                     >
