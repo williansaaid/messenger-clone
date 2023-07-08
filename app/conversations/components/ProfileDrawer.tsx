@@ -1,6 +1,7 @@
 'use client'
 
 import Avatar from "@/app/components/Avatar";
+import AvatarGroup from "@/app/components/AvatarGroup";
 import useOtherUser from "@/app/hooks/useOtherUser";
 import { Transition, Dialog } from "@headlessui/react";
 import { Conversation, User } from "@prisma/client";
@@ -124,7 +125,11 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                     <div
                                                         className="mb-2"
                                                     >
-                                                        <Avatar user={otherUser}/>
+                                                        {data?.isGroup ? (
+                                                            <AvatarGroup users={data?.users}/>
+                                                        ):(
+                                                            <Avatar user={otherUser}/>
+                                                        )}
                                                     </div>
                                                     <div>
                                                         {title}
@@ -160,6 +165,22 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                     <dl
                                                         className="space-y-8 px-4 sm:space-y-6 sm:px-6"
                                                     >
+                                                        {data.isGroup && (
+                                                            <div>
+                                                                <dt
+                                                                    className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0"
+                                                                >
+                                                                    Emails
+                                                                </dt>
+                                                                {data.users.map((user) => (
+                                                                    <dd
+                                                                        className="mt-1 text-sm text-dark sm:col-span-2"
+                                                                    >
+                                                                        - {user.email}
+                                                                    </dd>
+                                                                ))}
+                                                            </div>
+                                                        )}
                                                         {!data.isGroup && (
                                                             <div>
                                                                 <dt
