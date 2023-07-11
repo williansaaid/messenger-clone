@@ -171,7 +171,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                         className="space-y-8 px-4 sm:space-y-6 sm:px-6"
                                                     >
                                                         {data.isGroup && (
-                                                            <div>
+                                                            <div key={data?.id}>
                                                                 <dt
                                                                     className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0"
                                                                 >
@@ -179,6 +179,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                                 </dt>
                                                                 {data.users.map((user) => (
                                                                     <dd
+                                                                        key={user?.id}
                                                                         className="mt-1 text-sm text-dark sm:col-span-2"
                                                                     >
                                                                         - {user.email}
@@ -187,7 +188,7 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                                                             </div>
                                                         )}
                                                         {!data.isGroup && (
-                                                            <div>
+                                                            <div key={data?.id}>
                                                                 <dt
                                                                     className="text-sm font-medium text-gray-500 sm:w-40 sm:flex-shrink-0"
                                                                 >
